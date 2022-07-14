@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstring>
 #include <cstdio>
+#define N 3
 
 char* strcat(char* s1, char* s2){
 		int len1 = strlen(s1);
@@ -24,32 +25,30 @@ char* strset(char* s, char ch) {
 
 
 char* strmove(char* s, int n) {
-	char first = s[0];
-	char sec = 0;
-	char third = 0;
-	char sCopy[] = "hello";
+	
+	while(n){
+		int temp;
+		int len = strlen(s);
+		temp = s[len - 1];	
+		for(int i = len - 1; i > 0; i--){
+			s[i] = s[i - 1];
+		};
 
-for(int i = 0; i < strlen(s); ++i){
+		s[0] = temp;
 
-		if(!s[i + n]) {
-			for(int j = 0; j < n; ++j) {
-				s[j] = sCopy[strlen(sCopy) - (j + 1)]; 
-			}	
-			return s;
-		}
+		n--;
+	}
 
-		s[i + n] = sCopy[i + (n - 1)];
-
-};
 	return s;
 
 }
+
 
 int main() {
 		char x[] = "hello";
 		char y[] = "Poghosyan";
 		char z = 'x';
-		int num = 1;
+		int num = 2;
 		
 		//std::cout << strcat(x, y) << std::endl;
 		//std::cout << strset(x, z) << std::endl;
