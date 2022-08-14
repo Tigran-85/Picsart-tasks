@@ -1,19 +1,35 @@
-let num = 0;
+function bitSet(table, num) {
+    const index = Math.floor(num / 32);
+    const pos = num % 32;
+   
+    table[index] = table[index] | (1 << pos);
 
-function bitSet(n) {
-    num = num | (1 << n);
+    return table[index];
+}
 
-   return num;
-};
+function bitGet(table, num) {
+    const index = Math.floor(num / 32);
+    const pos = num % 32;
 
-function bitGet(n) {
-    if(num & (1 << n)) {
+    if (table[index] & (1 << pos)) {
         return true;
-    } else {
-        return false;
     };
-};
 
-console.log(bitSet(204));
-bitSet(10);
-console.log(bitGet(204));
+    return false;
+}
+
+function buildVector(bitCount) {
+    const elementCount = Math.ceil(bitCount / 32);
+    const table = new Array(elementCount);
+
+    for (let i = 0; i < elementCount; i++) {
+        table[i] = 0;
+    };
+
+    return table;
+}
+
+const table = buildVector(640);
+
+console.log(bitSet(table, 204));
+console.log(bitGet(table, 204));
