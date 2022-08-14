@@ -1,17 +1,15 @@
 function reverse(str) {
-    let arr = [];
-    let newArr = [];
-    for (let i = str.length - 1; i >= 0; i--) {
-        arr.push(str.codePointAt(i));
 
-    };
+    let strArr = [...str];
 
-    for (let i = 0; i < arr.length; i++) {
-        newArr.push(String.fromCodePoint(arr[i]))
+    for (let i = 0; i < str.length/2 - 1; i++) {
+
+        [strArr[i], strArr[strArr.length - 1- i]] = [strArr[strArr.length - 1- i], strArr[i]];
         
     };
 
-    return newArr.join('');
+    return strArr.join('');
+    
 };
 
 console.log(reverse('Tigran👩Poghosyan'));

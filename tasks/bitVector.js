@@ -14,6 +14,6 @@ function bitGet(n) {
     };
 };
 
-console.log(bitSet(7));
+console.log(bitSet(204));
 bitSet(10);
-console.log(bitGet(4));
+console.log(bitGet(204));
