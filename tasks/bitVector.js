@@ -1,6 +1,6 @@
 function bitSet(table, num) {
-    const index = Math.floor(num / 32);
-    const pos = num % 32;
+    const index = Math.floor(num / 31);
+    const pos = num % 31;
    
     table[index] = table[index] | (1 << pos);
 
@@ -8,8 +8,8 @@ function bitSet(table, num) {
 }
 
 function bitGet(table, num) {
-    const index = Math.floor(num / 32);
-    const pos = num % 32;
+    const index = Math.floor(num / 31);
+    const pos = num % 31;
 
     if (table[index] & (1 << pos)) {
         return true;
@@ -19,7 +19,7 @@ function bitGet(table, num) {
 }
 
 function buildVector(bitCount) {
-    const elementCount = Math.ceil(bitCount / 32);
+    const elementCount = Math.ceil(bitCount / 31);
     const table = new Array(elementCount);
 
     for (let i = 0; i < elementCount; i++) {
@@ -29,7 +29,7 @@ function buildVector(bitCount) {
     return table;
 }
 
-const table = buildVector(640);
+const table = buildVector(256);
 
-console.log(bitSet(table, 204));
-console.log(bitGet(table, 204));
+console.log(bitSet(table, 30));
+console.log(bitGet(table, 30));
