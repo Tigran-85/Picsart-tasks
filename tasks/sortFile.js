@@ -7,8 +7,8 @@ const numbers = text.split('\n');
 // };
 
 function bitSet(table, num) {
-    const index = Math.floor(num / 32);
-    const pos = num % 32;
+    const index = Math.floor(num / 31);
+    const pos = num % 31;
    
     table[index] = table[index] | (1 << pos);
 
@@ -16,18 +16,18 @@ function bitSet(table, num) {
 }
 
 function bitGet(table, num) {
-    const index = Math.floor(num / 32);
-    const pos = num % 32;
+    const index = Math.floor(num / 31);
+    const pos = num % 31;
 
     if (table[index] & (1 << pos)) {
-        return true;
+        return table[index];
     };
 
     return false;
 }
 
 function buildVector(bitCount) {
-    // const elementCount = Math.ceil(bitCount / 32);
+    // const elementCount = Math.ceil(bitCount / 31);
     const table = new Array(bitCount);
 
     for (let i = 0; i < bitCount; i++) {
@@ -35,37 +35,33 @@ function buildVector(bitCount) {
     };
 
     return table;
-}
+};
+let arrSorted = [];
 
-const table = buildVector(256);
 
-let arrsorted = [];
+let table = new Array(256);
+
+
 
 for (let i = 0; i < numbers.length; i++) {
     
-    // console.log(bitSet(table, numbers[i]));
-    let index = Math.floor(numbers[i]);
-    let pos = numbers[i] % 32;
-   
-    table[index] = table[index] | (1 << i);
-    // console.log(table[index], index);
+
+    for (let j = 0; j < table.length; j++) {
+        table[j] = 0;
+    };
+     
+    const index = Math.floor(numbers[i] / 31);
+    const pos = numbers[i] % 31;
+   console.log(pos);
+    table[index] = table[index] | (1 << pos);
+
+    arrSorted.push(pos)
+  
+
 };
 
-for (let i = 0; i < table.length; i++) {
-    let index = Math.floor(numbers[i]);
-    let pos = numbers[i] % 32;
-    // if (table[i] > 0) {
-    
-        if ((table[index] & (1 << i))) {
-            // if (table[index] > 0) {
-                arrsorted.push(table[index])
-            // }
-            
-        };
-        
-    // }
-    
-    
-}
 
-console.log(arrsorted);
+
+
+
+console.log(arrSorted);

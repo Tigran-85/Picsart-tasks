@@ -12,7 +12,7 @@ function bitGet(table, num) {
     const pos = num % 31;
 
     if (table[index] & (1 << pos)) {
-        return true;
+        return table[index];
     };
 
     return false;
@@ -31,5 +31,5 @@ function buildVector(bitCount) {
 
 const table = buildVector(256);
 
-console.log(bitSet(table, 30));
-console.log(bitGet(table, 30));
+console.log(bitSet(table, 40));
+console.log(bitGet(table, 40));
